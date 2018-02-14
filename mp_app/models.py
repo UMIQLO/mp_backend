@@ -11,6 +11,14 @@ class User(models.Model):
     def __str__(self):
         return self.email
     
+    def toJSON(self):
+        return dict(
+            id=self.id,
+            email=self.email, 
+            first_name=self.first_name,
+            last_name=self.last_name,
+        )
+    
     class Meta:
         db_table = 'mp_user'
 
