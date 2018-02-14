@@ -19,6 +19,7 @@ import mp_app.views as mp
 import mp_app.util.DebugUtil as debug
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     path('test/', include([
         path('json/', debug.testJson),
