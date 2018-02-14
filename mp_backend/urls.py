@@ -16,11 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import mp_app.views as mp
+import mp_app.util.DebugUtil as debug
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', include([
-        path('json/', mp.testJson),
-        path('http/', mp.testHttp),
+        path('json/', debug.testJson),
+        path('http/', debug.testHttp),
+    ])),
+    path('mp/', include([
+        path('', mp.index),
+        path('user/<int:userId>', mp.getUserInfoByUserId),
+        path('music/', mp.getAllMusic)
     ]))
 ]
