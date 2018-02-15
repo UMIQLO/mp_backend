@@ -26,7 +26,11 @@ urlpatterns = [
     ])),
     path('mp/', include([
         path('', mp.index),
+        path('reg/', mp.register),
         path('user/<int:userId>', mp.getUserInfoByUserId),
-        path('music/', mp.getAllMusic)
+        path('music/', include([
+            path('', mp.getAllMusic),
+            path('search/', mp.searchMusic),
+        ]))
     ]))
 ]
